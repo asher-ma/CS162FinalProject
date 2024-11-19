@@ -15,6 +15,9 @@ public class Tank {
         this.botY = botY;
     }
 
+    public void addFish(String type){
+
+    }
 
     // Tank side getters
     public int getLeftX(){
