@@ -9,6 +9,7 @@ public class Tank {
 
     ArrayList<Fish> fish = new ArrayList<Fish>();
 
+    // Constructor for when tank doesnt take up entire sketch
     public Tank(PApplet p, String backgroundFile, int leftX, int rightX, int topY, int botY){
         this.p = p;
         background = p.loadImage(backgroundFile);
@@ -19,7 +20,7 @@ public class Tank {
     }
 
     public void draw(){
-        p.image(background, leftX, topY, rightX-leftX, botY-topY);
+        p.image(background, 0, 0, p.width, p.height);
         for (Fish fish: fish){
             fish.draw();
         }
