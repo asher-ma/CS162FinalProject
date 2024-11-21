@@ -38,6 +38,7 @@ public class Tank {
         p.rect(leftX, topY, rightX-leftX, botY-topY);
         */
         for (Fish fish: fish){
+            testSides(fish);
             fish.move();
             fish.draw();
         }
@@ -45,6 +46,17 @@ public class Tank {
 
     public void addFish(String fishImgData, String type){
         fish.add(new Fish(p, fishImgData, type, leftX, rightX, topY, botY));
+    }
+
+    // Determines if fish is touching side of tank
+    // Reverses direction fish is traveling
+    private void testSides(Fish fish){
+        if (fish.x <= leftX || fish.x + fish.width >= rightX) {
+            fish.turnX();
+        }
+        if (fish.y <= topY || fish.y + fish.height >= botY){
+            fish.turnY();
+        }
     }
 
     // Tank side getters

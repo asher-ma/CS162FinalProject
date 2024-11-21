@@ -35,11 +35,15 @@ public class Fish {
         y += ySpeed;
     }
 
-    private boolean testWalls(){
-        return false;
+    public void flipFish(){
+        
     }
 
-    private void changeDirection(){
+    public void turnX(){
+
+    }
+
+    public void turnY(){
 
     }
 
