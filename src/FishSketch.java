@@ -9,7 +9,7 @@ public class FishSketch extends PApplet {
     }
  
     public void setup(){
-        tank = new Tank(this, "../data/tank.png", 0, 570, 30, 400);
+        tank = new Tank(this, "../data/tank.png", 0, 570, 75, 390);
     }
 
     public void draw(){

@@ -9,6 +9,16 @@ public class Tank {
 
     ArrayList<Fish> fish = new ArrayList<Fish>();
 
+    // Contructor for when tank is entire sketch
+    public Tank(PApplet p, String backgroundFile){
+        this.p = p;
+        background = p.loadImage(backgroundFile);
+        leftX = 0;
+        rightX = p.width;
+        topY = 0;
+        botY = p.height;
+    }
+
     // Constructor for when tank doesnt take up entire sketch
     public Tank(PApplet p, String backgroundFile, int leftX, int rightX, int topY, int botY){
         this.p = p;
@@ -21,6 +31,12 @@ public class Tank {
 
     public void draw(){
         p.image(background, 0, 0, p.width, p.height);
+        /*
+        use to find tank edges when tank isnt fullscreen
+        p.fill(0, 0);
+        p.strokeWeight(5);
+        p.rect(leftX, topY, rightX-leftX, botY-topY);
+        */
         for (Fish fish: fish){
             fish.draw();
         }
