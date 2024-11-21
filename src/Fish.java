@@ -2,14 +2,14 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Fish {
-    PApplet p;
+    private PApplet p;
     private final float MAXSPEED = 1;
 
-    PImage fishImg;
-    String type;
-    float x, y;
-    float xSpeed, ySpeed;
-    float width, height;
+    private PImage fishImg;
+    private String type;
+    private float x, y;
+    private float xSpeed, ySpeed;
+    private float width, height;
 
     public Fish(PApplet p, String fishImgData, String type, int tankLeft, int tankRight, int tankTop, int tankBot){
         this.p = p;
@@ -36,14 +36,6 @@ public class Fish {
     }
 
     public void flipFish(){
-        
-    }
-
-    public void turnX(){
-
-    }
-
-    public void turnY(){
 
     }
 
@@ -77,6 +69,14 @@ public class Fish {
 
     public float getHeight() {
         return height;
+    }
+
+    public void setXSpeed(float newXspeed) {
+        xSpeed = newXspeed;
+    }
+
+    public void setYSpeed(float newYspeed) {
+        ySpeed = newYspeed;
     }
 
     public String toString(){

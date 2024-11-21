@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Tank {
     PApplet p;
-    int leftX, rightX, topY, botY;
-    PImage background;
+    private int leftX, rightX, topY, botY;
+    private PImage background;
 
     ArrayList<Fish> fish = new ArrayList<Fish>();
 
@@ -51,11 +51,11 @@ public class Tank {
     // Determines if fish is touching side of tank
     // Reverses direction fish is traveling
     private void testSides(Fish fish){
-        if (fish.x <= leftX || fish.x + fish.width >= rightX) {
-            fish.turnX();
+        if (fish.getX() <= leftX || fish.getX() + fish.getWidth() >= rightX) {
+            //fish.setXSpeed = fish.getXSpeed() * -1;
         }
-        if (fish.y <= topY || fish.y + fish.height >= botY){
-            fish.turnY();
+        if (fish.getY() <= topY || fish.getY() + fish.getHeight() >= botY){
+            //fish.setYSpeed = fish.getYSpeed() * -1;
         }
     }
 
