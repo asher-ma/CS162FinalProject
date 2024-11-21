@@ -1,16 +1,19 @@
 import processing.core.PApplet;
+import processing.core.PImage;
 
 public class Fish {
     PApplet p;
     private final int MAXSPEED = 10;
 
+    PImage fishImg;
     String type;
     float x, y;
     float xSpeed, ySpeed;
     float width, height;
 
-    public Fish(PApplet p, String type, int minX, int maxX, int minY, int maxY){
+    public Fish(PApplet p, String fishImgData, String type, int minX, int maxX, int minY, int maxY){
         this.p = p;
+        fishImg = p.loadImage(fishImgData);
         x = p.random(minX + width, maxX - width);
         y = p.random(minY + height, maxY - height);
         xSpeed = p.random(-MAXSPEED, MAXSPEED);
@@ -18,7 +21,7 @@ public class Fish {
     }
 
     public void draw(){
-
+        p.image(fishImg, x, y, width, height);
     }
 
     private boolean testWalls(){
