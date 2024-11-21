@@ -3,7 +3,7 @@ import processing.core.PImage;
 
 public class Fish {
     PApplet p;
-    private final int MAXSPEED = 10;
+    private final float MAXSPEED = 1;
 
     PImage fishImg;
     String type;
@@ -28,6 +28,11 @@ public class Fish {
 
     public void draw(){
         p.image(fishImg, x, y, width, height);
+    }
+
+    public void move(){
+        x += xSpeed;
+        y += ySpeed;
     }
 
     private boolean testWalls(){

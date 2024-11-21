@@ -38,6 +38,7 @@ public class Tank {
         p.rect(leftX, topY, rightX-leftX, botY-topY);
         */
         for (Fish fish: fish){
+            fish.move();
             fish.draw();
         }
     }
