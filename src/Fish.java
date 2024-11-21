@@ -55,11 +55,11 @@ public class Fish {
         return y;
     }
 
-    public float getxSpeed() {
+    public float getXSpeed() {
         return xSpeed;
     }
 
-    public float getySpeed() {
+    public float getYSpeed() {
         return ySpeed;
     }
 
