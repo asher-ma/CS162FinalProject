@@ -27,7 +27,7 @@ public class Fish {
     }
 
     public void draw(){
-        if (xSpeed > 0) {
+        if (xSpeed < 0) {
             p.pushMatrix();
             p.translate(x + width, y);
             p.scale(-1, 1);
