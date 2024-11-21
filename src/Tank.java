@@ -16,7 +16,7 @@ public class Tank {
     }
 
     public void addFish(String type){
-
+        fish.add(new Fish(p, type, leftX, rightX, topY, botY));
     }
 
     // Tank side getters
