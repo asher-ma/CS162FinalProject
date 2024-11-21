@@ -1,6 +1,6 @@
 import processing.core.PApplet;
 
-public class MySketch extends PApplet {
+public class FishSketch extends PApplet {
     public void settings(){
         size(500, 500);
     }

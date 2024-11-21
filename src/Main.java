@@ -10,7 +10,7 @@ import processing.core.PApplet;
  */
 public class Main {
     public static void main(String[] args) {
-        PApplet mySketch = new MySketch();
+        PApplet mySketch = new FishSketch();
 	    String[] processingArgs = {"Asher's Sketch"};
 	    PApplet.runSketch(processingArgs, mySketch);
     }
