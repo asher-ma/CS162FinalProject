@@ -15,6 +15,12 @@ public class Tank {
         this.botY = botY;
     }
 
+    public void draw(){
+        for (Fish fish: fish){
+            fish.draw();
+        }
+    }
+
     public void addFish(String type){
         fish.add(new Fish(p, type, leftX, rightX, topY, botY));
     }
