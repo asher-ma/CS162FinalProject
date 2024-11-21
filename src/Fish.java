@@ -11,11 +11,17 @@ public class Fish {
     float xSpeed, ySpeed;
     float width, height;
 
-    public Fish(PApplet p, String fishImgData, String type, int minX, int maxX, int minY, int maxY){
+    public Fish(PApplet p, String fishImgData, String type, int tankLeft, int tankRight, int tankTop, int tankBot){
         this.p = p;
+        this.type = type;
+
         fishImg = p.loadImage(fishImgData);
-        x = p.random(minX + width, maxX - width);
-        y = p.random(minY + height, maxY - height);
+        float aspectRatio = fishImg.width/fishImg.height;
+        width = p.random(40, 70);
+        height = width*aspectRatio;
+
+        x = p.random(tankLeft + width, tankRight - width);
+        y = p.random(tankTop + height, tankBot - height);
         xSpeed = p.random(-MAXSPEED, MAXSPEED);
         ySpeed = p.random(-MAXSPEED, MAXSPEED);
     }
