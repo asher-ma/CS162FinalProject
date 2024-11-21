@@ -17,6 +17,8 @@ public class Button {
         this.image = image;
         this.x = x;
         this.y = y;
+        width = DEFAULT_BUTTON_WIDTH;
+        height = DEFAULT_BUTTON_HEIGHT;
     }
 
     // Constructor allowing custom width and height
