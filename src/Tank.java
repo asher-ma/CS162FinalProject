@@ -37,6 +37,7 @@ public class Tank {
         p.strokeWeight(5);
         p.rect(leftX, topY, rightX-leftX, botY-topY);
         */
+        testCollisions();
         for (Fish fish: fish){
             testSides(fish);
             fish.move();
@@ -46,6 +47,29 @@ public class Tank {
 
     public void addFish(String fishImgData, String type){
         fish.add(new Fish(p, fishImgData, type, leftX, rightX, topY, botY));
+    }
+
+    // Function to bounce fish off of eachother
+    // TODO First determine which side of fish is overlapping with any other fish
+    // TODO then reverse speed
+
+    private void testCollisions() {
+        for (int i = 0; i < fish.size(); i++) {
+            Fish fish1 = fish.get(i);
+            float f1L = fish1.getX();
+            float f1R = fish1.getX() + fish1.getWidth();
+
+            for (int j = i+1; j < fish.size(); j++) {
+                Fish fish2 = fish.get(j);
+                float f2L = fish2.getX();
+                float f2R = fish2.getX() + fish2.getWidth();
+
+                if (f1R >= f2L && f1L <= f2L) {
+                    fish1.reverseX();
+                    fish2.reverseX();
+                }
+            }
+        }
     }
 
     // Determines if fish is touching side of tank
