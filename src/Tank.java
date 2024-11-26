@@ -52,10 +52,10 @@ public class Tank {
     // Reverses direction fish is traveling
     private void testSides(Fish fish){
         if (fish.getX() <= leftX || fish.getX() + fish.getWidth() >= rightX) {
-            fish.setXSpeed(fish.getXSpeed() * -1);
+            fish.reverseX();
         }
         if (fish.getY() <= topY || fish.getY() + fish.getHeight() >= botY){
-            fish.setYSpeed(fish.getYSpeed() * -1);
+            fish.reverseY();
         }
     }
 

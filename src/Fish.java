@@ -43,6 +43,14 @@ public class Fish {
         y += ySpeed;
     }
 
+    public void reverseX(){
+        xSpeed = xSpeed*-1;
+    }
+
+    public void reverseY(){
+        ySpeed = ySpeed*-1;
+    }
+
     public String getType() {
         return type;
     }
