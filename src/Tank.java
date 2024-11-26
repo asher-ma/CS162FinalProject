@@ -55,18 +55,25 @@ public class Tank {
 
     private void testCollisions() {
         for (int i = 0; i < fish.size(); i++) {
-            Fish fish1 = fish.get(i);
-            float f1L = fish1.getX();
-            float f1R = fish1.getX() + fish1.getWidth();
+            Fish f1 = fish.get(i);
+            float f1L = f1.getX();
+            float f1R = f1.getX() + f1.getWidth();
+            float f1T = f1.getY();
+            float f1B = f1.getY() + f1.getHeight();
 
             for (int j = i+1; j < fish.size(); j++) {
-                Fish fish2 = fish.get(j);
-                float f2L = fish2.getX();
-                float f2R = fish2.getX() + fish2.getWidth();
+                Fish f2 = fish.get(j);
+                float f2L = f2.getX();
+                float f2R = f2.getX() + f2.getWidth();
+                float f2T = f2.getY();
+                float f2B = f2.getY() + f2.getHeight();
 
-                if (f1R >= f2L && f1L <= f2L) {
-                    fish1.reverseX();
-                    fish2.reverseX();
+                if (f1R >= f2L && f1L <= f2L && f1T < f2B && f1B > f2T) {
+                    f1.setXSpeed(-Math.abs(f1.getXSpeed()));
+                    f2.setXSpeed(Math.abs(f2.getXSpeed()));
+                } else if (f2R >= f1L && f2L <= f1L && f1T < f2B && f1B > f2T) {
+                    f1.setXSpeed(Math.abs(f1.getXSpeed()));
+                    f2.setXSpeed(-Math.abs(f2.getXSpeed()));
                 }
             }
         }
