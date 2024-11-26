@@ -3,7 +3,8 @@ import processing.core.PImage;
 
 public class Fish {
     private PApplet p;
-    private final float MAXSPEED = (float)0.1;
+    private final float MINSPEED = (float)0.1;
+    private final float MAXSPEED = (float)0.3;
 
     private PImage fishImg;
     private String type;
@@ -22,8 +23,8 @@ public class Fish {
 
         x = p.random(tankLeft + width, tankRight - width);
         y = p.random(tankTop + height, tankBot - height);
-        xSpeed = p.random(-MAXSPEED, MAXSPEED)*10;
-        ySpeed = p.random(-MAXSPEED, MAXSPEED)*5;
+        xSpeed = randomNeg(p.random(MINSPEED, MAXSPEED))*(float)1.5;
+        ySpeed = randomNeg(p.random(MINSPEED, MAXSPEED));
     }
 
     public void draw(){
@@ -51,6 +52,13 @@ public class Fish {
         ySpeed = ySpeed*-1;
     }
 
+    private float randomNeg(float num){
+        if(p.random(1) > 0.5){
+            return -num;
+        } else return num;
+    }
+
+    // Getters
     public String getType() {
         return type;
     }
