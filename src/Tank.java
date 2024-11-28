@@ -51,47 +51,21 @@ public class Tank {
     }
 
     // Function to bounce fish off of eachother
-    // Determine if fish are colliding
-    // TODO determine which side of each fish is overlapping 
+    // Determine if and which fish are colliding
+    // determine which side of each fish is overlapping
     // TODO then reverse speed based on which sides are colliding
-
-    /*
-    private void testAllCollisions() {
-        for (int i = 0; i < fish.size(); i++) {
-            Fish f1 = fish.get(i);
-            float f1L = f1.getX();
-            float f1R = f1.getX() + f1.getWidth();
-            float f1T = f1.getY();
-            float f1B = f1.getY() + f1.getHeight();
-
-            for (int j = i+1; j < fish.size(); j++) {
-                Fish f2 = fish.get(j);
-                float f2L = f2.getX();
-                float f2R = f2.getX() + f2.getWidth();
-                float f2T = f2.getY();
-                float f2B = f2.getY() + f2.getHeight();
-
-                if (f1R >= f2L && f1L <= f2L && f1T < f2B && f1B > f2T) {
-                    f1.setXSpeed(-Math.abs(f1.getXSpeed()));
-                    f2.setXSpeed(Math.abs(f2.getXSpeed()));
-                } else if (f2R >= f1L && f2L <= f1L && f1T < f2B && f1B > f2T) {
-                    f1.setXSpeed(Math.abs(f1.getXSpeed()));
-                    f2.setXSpeed(-Math.abs(f2.getXSpeed()));
-                }
-            }
-        }
-    }
-    */
 
     private void testAllCollisions(){
         for (int i = 0; i < fish.size(); i++) {
             for (int j = i+1; j < fish.size(); j++) {
                 if (isColliding(fish.get(i), fish.get(j))) {
                     collisionsDetected++;
-                    String collisionSide = collisionSide(fish.get(i), fish.get(j));
-                    System.out.println(collisionsDetected + " " + fish.get(i) + " " + collisionSide);
-                    fish.get(i).stop();
-                    fish.get(j).stop();
+                    String f1CollisionSide = collisionSide(fish.get(i), fish.get(j));
+                    String f2CollisionSide = collisionSide(fish.get(j), fish.get(i));
+                    System.out.println(collisionsDetected + " " + fish.get(i) + " " + f1CollisionSide);
+                    System.out.println(collisionsDetected + " " + fish.get(j) + " " + f2CollisionSide);
+                    fish.get(i).swimAway(f1CollisionSide);
+                    fish.get(j).swimAway(f2CollisionSide);
                 }
             }
         }

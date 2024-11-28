@@ -4,7 +4,7 @@ import processing.core.PImage;
 public class Fish {
     private PApplet p;
     private final float MINSPEED = (float)0.2;
-    private final float MAXSPEED = (float)0.6;
+    private final float MAXSPEED = (float)2;
 
     private PImage fishImg;
     private String type;
@@ -56,6 +56,14 @@ public class Fish {
         if(p.random(1) > 0.5){
             return -num;
         } else return num;
+    }
+
+    public void swimAway(String side) {
+        if (side.equals("left") && xSpeed < 0 || side.equals("right") && xSpeed > 0) {
+            reverseX();
+        } else if (side.equals("top") && ySpeed < 0 || side.equals("bottom") && ySpeed > 0) {
+            reverseY();
+        }
     }
 
 
