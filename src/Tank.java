@@ -6,6 +6,7 @@ public class Tank {
     PApplet p;
     private int leftX, rightX, topY, botY;
     private PImage background;
+    private int collisionsDetected = 0;
 
     ArrayList<Fish> fish = new ArrayList<Fish>();
 
@@ -82,11 +83,15 @@ public class Tank {
     }
     */
 
-    private void testAllCollisions() {
+    private void testAllCollisions(){
         for (int i = 0; i < fish.size(); i++) {
             for (int j = i+1; j < fish.size(); j++) {
                 if (isColliding(fish.get(i), fish.get(j))) {
-                    
+                    collisionsDetected++;
+                    String collisionSide = collisionSide(fish.get(i), fish.get(j));
+                    System.out.println(collisionsDetected + " " + fish.get(i) + " " + collisionSide);
+                    fish.get(i).stop();
+                    fish.get(j).stop();
                 }
             }
         }
@@ -94,11 +99,18 @@ public class Tank {
 
     private boolean isColliding(Fish f1, Fish f2){
         if (f1.getX() + f1.getWidth() >= f2.getX() && f1.getX() <= f2.getX() + f2.getWidth()
-        && f1.getY() + f1.getHeight() >= f2.getY() && f1.getX() <= f2.getY() + f2.getHeight()) {
+        && f1.getY() + f1.getHeight() >= f2.getY() && f1.getY() <= f2.getY() + f2.getHeight()) {
             return true;
         } else return false;
     }
-
+    
+    private String collisionSide(Fish f1, Fish f2){
+        if(Math.abs(Math.abs(f1.getMidX()) - Math.abs(f2.getMidX())) > Math.abs(Math.abs(f1.getMidY()) - Math.abs(f2.getMidY()))){
+            return "X collision";
+        } else {
+            return "Y collision";
+        }
+    }
 
     // Determines if fish is touching side of tank
     // Reverses direction fish is traveling
