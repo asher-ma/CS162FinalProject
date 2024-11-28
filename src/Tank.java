@@ -104,11 +104,19 @@ public class Tank {
         } else return false;
     }
     
-    private String collisionSide(Fish f1, Fish f2){
-        if(Math.abs(Math.abs(f1.getMidX()) - Math.abs(f2.getMidX())) > Math.abs(Math.abs(f1.getMidY()) - Math.abs(f2.getMidY()))){
-            return "X collision";
+    private String collisionSide(Fish f1, Fish f2) {
+        if (Math.abs(Math.abs(f1.getMidX()) - Math.abs(f2.getMidX())) > Math.abs(Math.abs(f1.getMidY()) - Math.abs(f2.getMidY()))) {
+            if (f1.getMidX() > f2.getMidX()) {
+                return "left";
+            } else {
+                return "right";
+            }
         } else {
-            return "Y collision";
+            if (f1.getMidY() > f2.getMidY()) {
+                return "top";
+            } else {
+                return "bottom";
+            }
         }
     }
 
