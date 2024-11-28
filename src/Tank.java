@@ -6,7 +6,6 @@ public class Tank {
     PApplet p;
     private int leftX, rightX, topY, botY;
     private PImage background;
-    private int collisionsDetected = 0;
 
     ArrayList<Fish> fish = new ArrayList<Fish>();
 
@@ -53,19 +52,14 @@ public class Tank {
     // Function to bounce fish off of eachother
     // Determine if and which fish are colliding
     // determine which side of each fish is overlapping
-    // TODO then reverse speed based on which sides are colliding
+    // then reverse speed based on which sides are colliding
 
     private void testAllCollisions(){
         for (int i = 0; i < fish.size(); i++) {
             for (int j = i+1; j < fish.size(); j++) {
                 if (isColliding(fish.get(i), fish.get(j))) {
-                    collisionsDetected++;
-                    String f1CollisionSide = collisionSide(fish.get(i), fish.get(j));
-                    String f2CollisionSide = collisionSide(fish.get(j), fish.get(i));
-                    System.out.println(collisionsDetected + " " + fish.get(i) + " " + f1CollisionSide);
-                    System.out.println(collisionsDetected + " " + fish.get(j) + " " + f2CollisionSide);
-                    fish.get(i).swimAway(f1CollisionSide);
-                    fish.get(j).swimAway(f2CollisionSide);
+                    fish.get(i).swimAway(collisionSide(fish.get(i), fish.get(j)));
+                    fish.get(j).swimAway(collisionSide(fish.get(j), fish.get(i)));
                 }
             }
         }

@@ -4,7 +4,7 @@ import processing.core.PImage;
 public class Fish {
     private PApplet p;
     private final float MINSPEED = (float)0.2;
-    private final float MAXSPEED = (float)2;
+    private final float MAXSPEED = (float)0.6;
 
     private PImage fishImg;
     private String type;
