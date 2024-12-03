@@ -46,7 +46,7 @@ public class Tank {
     }
 
     public void addFish(String fishImgData, String type){
-        fish.add(new Fish(p, fishImgData, fish.size(), type, leftX, rightX, topY, botY));
+        fish.add(new Fish(p, fishImgData, fish.size()+1, type, leftX, rightX, topY, botY));
     }
 
     // Function to bounce fish off of eachother

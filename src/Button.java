@@ -2,8 +2,9 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Button {
-    private static final float DEFAULT_BUTTON_WIDTH = 40;
-    private static final float DEFAULT_BUTTON_HEIGHT = 40;
+    private static final float DEFAULT_WIDTH = 40;
+    private static final float DEFAULT_HEIGHT = 40;
+    private static final float BUFFER = 5;
 
     private PApplet p;
     private PImage image;
@@ -12,13 +13,14 @@ public class Button {
     private float height;
 
     // Use the default width and height
-    public Button(PApplet p, PImage image, float x, float y){
+    // Use the sketch dimensions and fish number to place the button
+    public Button(PApplet p, PImage image, int fishNum){
         this.p = p;
         this.image = image;
-        this.x = x;
-        this.y = y;
-        width = DEFAULT_BUTTON_WIDTH;
-        height = DEFAULT_BUTTON_HEIGHT;
+        y = p.height - DEFAULT_HEIGHT - BUFFER;
+        x = p.width - (DEFAULT_WIDTH + BUFFER)*fishNum;
+        width = DEFAULT_WIDTH;
+        height = DEFAULT_HEIGHT;
     }
 
     // Constructor allowing custom width and height

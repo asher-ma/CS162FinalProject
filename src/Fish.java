@@ -42,6 +42,7 @@ public class Fish {
         } else {
             p.image(fishImg, x, y, width, height);
         }
+        button.draw();
     }
 
     public void move(){
