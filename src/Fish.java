@@ -11,13 +11,11 @@ public class Fish {
     private float x, y;
     private float xSpeed, ySpeed;
     private float width, height;
-    private int num;
     private Button button;
 
     public Fish(PApplet p, String fishImgData, int num, String type, int tankLeft, int tankRight, int tankTop, int tankBot){
         this.p = p;
         this.type = type;
-        this.num = num;
 
         fishImg = p.loadImage(fishImgData);
         float aspectRatio = fishImg.width/fishImg.height;
