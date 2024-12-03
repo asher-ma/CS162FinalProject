@@ -12,12 +12,14 @@ public class Fish {
     private float xSpeed, ySpeed;
     private float width, height;
     private Button button;
+    private int num;
 
-    public Fish(PApplet p, String fishImgData, int num, String type, int tankLeft, int tankRight, int tankTop, int tankBot){
+    public Fish(PApplet p, PImage fishImg, int num, String type, int tankLeft, int tankRight, int tankTop, int tankBot){
         this.p = p;
         this.type = type;
+        this.num = num;
 
-        fishImg = p.loadImage(fishImgData);
+        this.fishImg = fishImg;
         float aspectRatio = fishImg.width/fishImg.height;
         width = p.random(40, 70);
         height = width*aspectRatio;
@@ -27,7 +29,7 @@ public class Fish {
         xSpeed = randomNeg(p.random(MINSPEED, MAXSPEED))*(float)1.5;
         ySpeed = randomNeg(p.random(MINSPEED, MAXSPEED));
 
-        button = new Button(p, fishImg, num);
+        if (num > 0) button = new Button(p, fishImg, num);
     }
 
     public void draw(){
@@ -40,7 +42,8 @@ public class Fish {
         } else {
             p.image(fishImg, x, y, width, height);
         }
-        button.draw();
+        
+        if (num > 0) button.draw();
     }
 
     public void move(){
@@ -87,6 +90,15 @@ public class Fish {
     }
 
     // Getters
+
+    public PImage getImg() {
+        return fishImg;
+    }
+
+    public Button getButton() {
+        return button;
+    }
+
     public String getType() {
         return type;
     }

@@ -8,13 +8,17 @@ public class FishSketch extends PApplet {
     }
  
     public void setup(){
-        tank = new Tank(this, "../data/tank.png", 0, 570, 75, 390);
-        tank.addFish("../data/orangeFish.png", "Orange Fish");
-        tank.addFish("../data/blueFish.png", "Blue Fish");
-        tank.addFish("../data/greenFish.png", "Green Fish");
+        tank = new Tank(this, this.loadImage("../data/tank.png"), 0, 570, 75, 390);
+        tank.newFish(this.loadImage("../data/orangeFish.png"), "Orange Fish");
+        tank.newFish(this.loadImage("../data/blueFish.png"), "Blue Fish");
+        tank.newFish(this.loadImage("../data/greenFish.png"), "Green Fish");
     }
 
     public void draw(){
         tank.draw();
+    }
+
+    public void mouseClicked(){
+        tank.mouseClicked();
     }
 }

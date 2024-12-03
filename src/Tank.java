@@ -10,9 +10,9 @@ public class Tank {
     ArrayList<Fish> fish = new ArrayList<Fish>();
 
     // Contructor for when tank is entire sketch
-    public Tank(PApplet p, String backgroundFile){
+    public Tank(PApplet p, PImage background){
         this.p = p;
-        background = p.loadImage(backgroundFile);
+        this.background = background;
         leftX = 0;
         rightX = p.width;
         topY = 0;
@@ -20,9 +20,9 @@ public class Tank {
     }
 
     // Constructor for when tank doesnt take up entire sketch
-    public Tank(PApplet p, String backgroundFile, int leftX, int rightX, int topY, int botY){
+    public Tank(PApplet p, PImage background, int leftX, int rightX, int topY, int botY){
         this.p = p;
-        background = p.loadImage(backgroundFile);
+        this.background = background;
         this.leftX = leftX;
         this.rightX = rightX;
         this.topY = topY;
@@ -45,8 +45,18 @@ public class Tank {
         }
     }
 
-    public void addFish(String fishImgData, String type){
-        fish.add(new Fish(p, fishImgData, fish.size()+1, type, leftX, rightX, topY, botY));
+    public void mouseClicked(){
+        for (Fish fish: fish){
+            Button button = fish.getButton();
+            if (button.isInButton()){
+                this.fish.add(new Fish(p, fish.getImg(), 0, fish.getType(), leftX, rightX, topY, botY));
+                return;
+            }
+        }
+    }
+
+    public void newFish(PImage fishImg, String type){
+        fish.add(new Fish(p, fishImg, fish.size()+1, type, leftX, rightX, topY, botY));
     }
 
     // Function to bounce fish off of eachother
