@@ -3,8 +3,8 @@ import processing.core.PImage;
 
 public class Fish {
     private PApplet p;
-    private final float MINSPEED = (float)0.2;
-    private final float MAXSPEED = (float)0.6;
+    private final float MINSPEED = (float)0.6;
+    private final float MAXSPEED = (float)2;
 
     private PImage img;
     private String name;
@@ -23,18 +23,21 @@ public class Fish {
 
         this.img = img;
         float aspectRatio = img.width/img.height;
-        width = p.random(40, 70);
-        height = width*aspectRatio;
+        if (type == 1) width = p.random(100, 150);
+        else width = p.random(40, 70);
+        height = width/aspectRatio;
 
         x = p.random(tankLeft + width, tankRight - width);
         y = p.random(tankTop + height, tankBot - height);
-        xSpeed = randomNeg(p.random(MINSPEED, MAXSPEED))*(float)1.5;
+        xSpeed = randomNeg(p.random(MINSPEED, MAXSPEED))*2;
         ySpeed = randomNeg(p.random(MINSPEED, MAXSPEED));
 
         if (num > 0) button = new Button(p, img, num);
     }
 
     public void draw(){
+        if (num > 0) button.draw();
+
         if (xSpeed < 0) {
             p.pushMatrix();
             p.translate(x + width, y);
@@ -44,8 +47,6 @@ public class Fish {
         } else {
             p.image(img, x, y, width, height);
         }
-        
-        if (num > 0) button.draw();
     }
 
     public void move(){
