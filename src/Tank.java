@@ -49,14 +49,14 @@ public class Tank {
         for (Fish fish: fish){
             Button button = fish.getButton();
             if (button.isInButton()){
-                this.fish.add(new Fish(p, fish.getImg(), 0, fish.getType(), leftX, rightX, topY, botY));
+                this.fish.add(new Fish(p, fish.getImg(), 0, fish.getName(), leftX, rightX, topY, botY));
                 return;
             }
         }
     }
 
-    public void newFish(PImage fishImg, String type){
-        fish.add(new Fish(p, fishImg, fish.size()+1, type, leftX, rightX, topY, botY));
+    public void newFish(PImage fishImg, String name){
+        fish.add(new Fish(p, fishImg, fish.size()+1, name, leftX, rightX, topY, botY));
     }
 
     // Function to bounce fish off of eachother

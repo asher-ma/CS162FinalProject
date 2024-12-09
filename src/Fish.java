@@ -7,16 +7,16 @@ public class Fish {
     private final float MAXSPEED = (float)0.6;
 
     private PImage fishImg;
-    private String type;
+    private String name;
     private float x, y;
     private float xSpeed, ySpeed;
     private float width, height;
     private Button button;
     private int num;
 
-    public Fish(PApplet p, PImage fishImg, int num, String type, int tankLeft, int tankRight, int tankTop, int tankBot){
+    public Fish(PApplet p, PImage fishImg, int num, String name, int tankLeft, int tankRight, int tankTop, int tankBot){
         this.p = p;
-        this.type = type;
+        this.name = name;
         this.num = num;
 
         this.fishImg = fishImg;
@@ -99,8 +99,8 @@ public class Fish {
         return button;
     }
 
-    public String getType() {
-        return type;
+    public String getName() {
+        return name;
     }
 
     public float getX() {
@@ -136,6 +136,6 @@ public class Fish {
     }
 
     public String toString(){
-        return type;
+        return name;
     }
 }
