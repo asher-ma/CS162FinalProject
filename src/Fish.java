@@ -6,21 +6,23 @@ public class Fish {
     private final float MINSPEED = (float)0.2;
     private final float MAXSPEED = (float)0.6;
 
-    private PImage fishImg;
+    private PImage img;
     private String name;
+    private boolean predator;
     private float x, y;
     private float xSpeed, ySpeed;
     private float width, height;
     private Button button;
     private int num;
 
-    public Fish(PApplet p, PImage fishImg, int num, String name, int tankLeft, int tankRight, int tankTop, int tankBot){
+    public Fish(PApplet p, PImage img, int num, String name, boolean predator, int tankLeft, int tankRight, int tankTop, int tankBot){
         this.p = p;
         this.name = name;
         this.num = num;
+        this.predator = predator;
 
-        this.fishImg = fishImg;
-        float aspectRatio = fishImg.width/fishImg.height;
+        this.img = img;
+        float aspectRatio = img.width/img.height;
         width = p.random(40, 70);
         height = width*aspectRatio;
 
@@ -29,7 +31,7 @@ public class Fish {
         xSpeed = randomNeg(p.random(MINSPEED, MAXSPEED))*(float)1.5;
         ySpeed = randomNeg(p.random(MINSPEED, MAXSPEED));
 
-        if (num > 0) button = new Button(p, fishImg, num);
+        if (num > 0) button = new Button(p, img, num);
     }
 
     public void draw(){
@@ -37,10 +39,10 @@ public class Fish {
             p.pushMatrix();
             p.translate(x + width, y);
             p.scale(-1, 1);
-            p.image(fishImg, 0, 0, width, height);
+            p.image(img, 0, 0, width, height);
             p.popMatrix();
         } else {
-            p.image(fishImg, x, y, width, height);
+            p.image(img, x, y, width, height);
         }
         
         if (num > 0) button.draw();
@@ -81,6 +83,10 @@ public class Fish {
 
     // Special getters
 
+    public boolean isPredator(){
+        return predator;
+    }
+    
     public float getMidX(){
         return x + width/2;
     }
@@ -92,7 +98,7 @@ public class Fish {
     // Getters
 
     public PImage getImg() {
-        return fishImg;
+        return img;
     }
 
     public Button getButton() {
