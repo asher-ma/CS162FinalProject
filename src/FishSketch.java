@@ -8,11 +8,18 @@ public class FishSketch extends PApplet {
     }
  
     public void setup(){
-        tank = new Tank(this, this.loadImage("../data/tank.png"), 0, 570, 75, 390);
-        tank.newFish(this.loadImage("../data/orangeFish.png"), "Orange Fish", false);
-        tank.newFish(this.loadImage("../data/blueFish.png"), "Blue Fish", false);
-        tank.newFish(this.loadImage("../data/greenFish.png"), "Green Fish", false);
-        tank.newFish(this.loadImage("../data/meanFish.png"), "Green Fish", true);
+        //tank = new Tank(this, this.loadImage("../data/tank.png"), 0, 570, 75, 390);
+        tank = new Tank(this, this.loadImage("../data/sotBg.png"));
+        //tank.newFish(this.loadImage("../data/orangeFish.png"), "Orange Fish", false);
+        //tank.newFish(this.loadImage("../data/blueFish.png"), "Blue Fish", false);
+        //tank.newFish(this.loadImage("../data/greenFish.png"), "Green Fish", false);
+        //tank.newFish(this.loadImage("../data/meanFish.png"), "Green Fish", true);
+        tank.newFish(this.loadImage("../data/rubySplashtail.png"), "Ruby Splashtail", 0);
+        tank.newFish(this.loadImage("../data/almondAncietScale.png"), "Almond AncientScale", 0);
+        tank.newFish(this.loadImage("../data/russetWildsplash.png"), "Russet Wildsplash", 0);
+        tank.newFish(this.loadImage("../data/stoneIslehopper.png"), "Stone Islehopper", 2);
+        tank.newFish(this.loadImage("../data/rubySplashtail.png"), "Ruby Splashtail", 0);
+        tank.newFish(this.loadImage("../data/rubySplashtail.png"), "Ruby Splashtail", 0);
     }
 
     public void draw(){
