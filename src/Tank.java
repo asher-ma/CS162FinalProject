@@ -72,8 +72,9 @@ public class Tank {
     // then reverse speed based on which sides are colliding
 
     private void testAllCollisions(){
-        for (int i = fish.size()-1; i >= 0; i--) {
-            for (int j = i-1; j >= 0; j--) {
+        ArrayList<Fish> deadFish = new ArrayList<Fish>();
+        for (int i = 0; i < fish.size(); i++) {
+            for (int j = i+1; j < fish.size(); j++) {
                 Fish f1 = fish.get(i);
                 Fish f2 = fish.get(j);
                 if (isColliding(f1, f2)) {
@@ -81,18 +82,24 @@ public class Tank {
                         System.out.println("Pred x prey collision");
                         if(isFacingCollision(f1, f2)){
                             System.out.println(f1.getName() + " ate " + f2.getName());
-                            fish.remove(j);
+                            deadFish.add(f2);
                         }
                     } else if (f1.getType() != 1 && f2.getType() == 1){
                         System.out.println("Pred x prey collision");
                         if(isFacingCollision(f2, f1)){
                             System.out.println(f2.getName() + " ate " + f1.getName());
-                            fish.remove(i);
+                            deadFish.add(f1);
                         }
                     }
                     f1.swimAway(collisionSide(f1, f2));
                     f2.swimAway(collisionSide(f2, f1));
+                    
                 }
+            }
+        }
+        if (deadFish.size() > 0){
+            for (Fish f: deadFish){
+                fish.remove(f);
             }
         }
     }
