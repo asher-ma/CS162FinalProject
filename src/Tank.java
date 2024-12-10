@@ -39,6 +39,7 @@ public class Tank {
         p.strokeWeight(5);
         p.rect(leftX, topY, rightX-leftX, botY-topY);
         */
+
         testAllCollisions();
         for (Fish fish: fish){
             testSides(fish);
@@ -71,6 +72,27 @@ public class Tank {
     // then reverse speed based on which sides are colliding
 
     private void testAllCollisions(){
+        for (int i = fish.size()-1; i >= 0; i--) {
+            for (int j = i-1; j >= 0; j--) {
+                Fish f1 = fish.get(i);
+                Fish f2 = fish.get(j);
+                if (isColliding(f1, f2)) {
+                    f1.swimAway(collisionSide(f1, f2));
+                    f2.swimAway(collisionSide(f2, f1));
+                    if (f1.getType() == 1 && f2.getType() != 1){
+                        if(isFacingCollision(f1, f2)){
+                            
+                        }
+                    } else if (f1.getType() != 1 && f2.getType() == 1){
+                        
+                    } 
+                }
+            }
+        }
+    }
+
+/*
+    private void testAllCollisions(){
         for (int i = 0; i < fish.size(); i++) {
             for (int j = i+1; j < fish.size(); j++) {
                 if (isColliding(fish.get(i), fish.get(j))) {
@@ -80,6 +102,7 @@ public class Tank {
             }
         }
     }
+*/
 
     private boolean isColliding(Fish f1, Fish f2){
         if (f1.getX() + f1.getWidth() >= f2.getX() && f1.getX() <= f2.getX() + f2.getWidth()
@@ -88,6 +111,23 @@ public class Tank {
         } else return false;
     }
     
+    private boolean isFacingCollision(Fish f1, Fish f2) {
+        if (Math.abs(Math.abs(f1.getMidX()) - Math.abs(f2.getMidX())) > Math.abs(Math.abs(f1.getMidY()) - Math.abs(f2.getMidY()))) {
+            if (f1.getMidX() > f2.getMidX()) {
+                if (f1.getXSpeed() < 0){
+                    return true;
+                }
+            }
+        } else {
+            if (f1.getMidY() > f2.getMidY()) {
+                if (f1.getYSpeed() < 0){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     private String collisionSide(Fish f1, Fish f2) {
         if (Math.abs(Math.abs(f1.getMidX()) - Math.abs(f2.getMidX())) > Math.abs(Math.abs(f1.getMidY()) - Math.abs(f2.getMidY()))) {
             if (f1.getMidX() > f2.getMidX()) {
