@@ -77,15 +77,21 @@ public class Tank {
                 Fish f1 = fish.get(i);
                 Fish f2 = fish.get(j);
                 if (isColliding(f1, f2)) {
-                    f1.swimAway(collisionSide(f1, f2));
-                    f2.swimAway(collisionSide(f2, f1));
                     if (f1.getType() == 1 && f2.getType() != 1){
+                        System.out.println("Pred x prey collision");
                         if(isFacingCollision(f1, f2)){
-                            
+                            System.out.println(f1.getName() + " ate " + f2.getName());
+                            fish.remove(j);
                         }
                     } else if (f1.getType() != 1 && f2.getType() == 1){
-                        
-                    } 
+                        System.out.println("Pred x prey collision");
+                        if(isFacingCollision(f2, f1)){
+                            System.out.println(f2.getName() + " ate " + f1.getName());
+                            fish.remove(i);
+                        }
+                    }
+                    f1.swimAway(collisionSide(f1, f2));
+                    f2.swimAway(collisionSide(f2, f1));
                 }
             }
         }
@@ -114,13 +120,27 @@ public class Tank {
     private boolean isFacingCollision(Fish f1, Fish f2) {
         if (Math.abs(Math.abs(f1.getMidX()) - Math.abs(f2.getMidX())) > Math.abs(Math.abs(f1.getMidY()) - Math.abs(f2.getMidY()))) {
             if (f1.getMidX() > f2.getMidX()) {
+                System.out.println("left");
+                System.out.println(f1.getXSpeed());
                 if (f1.getXSpeed() < 0){
+                    return true;
+                }
+            } else {
+                System.out.println("right");
+                System.out.println(f1.getXSpeed());
+                if (f1.getXSpeed() > 0){
                     return true;
                 }
             }
         } else {
             if (f1.getMidY() > f2.getMidY()) {
+                System.out.println("top");
                 if (f1.getYSpeed() < 0){
+                    return true;
+                }
+            } else {
+                System.out.println("bottom");
+                if (f1.getYSpeed() > 0){
                     return true;
                 }
             }
