@@ -7,26 +7,29 @@ public class Button {
     private static final float BUFFER = 10;
 
     private PApplet p;
-    private PImage image;
+    private PImage img;
     private float x, y;
-    private float width;
-    private float height;
+    private float width, height;
+    private int type;
+    private String name;
 
     // Use the default width and height
     // Use the sketch dimensions and fish number to place the button
-    public Button(PApplet p, PImage image, int fishNum){
+    public Button(PApplet p, int buttonNum, PImage img, int type, String name){
         this.p = p;
-        this.image = image;
+        this.img = img;
+        this.type = type;
+        this.name = name;
         y = p.height - DEFAULT_HEIGHT - BUFFER;
-        x = p.width - (DEFAULT_WIDTH + BUFFER)*fishNum;
+        x = p.width - (DEFAULT_WIDTH + BUFFER)*buttonNum;
         width = DEFAULT_WIDTH;
         height = DEFAULT_HEIGHT;
     }
 
     // Constructor allowing custom width and height
-    public Button(PApplet p, PImage image, float x, float y, float width, float height){
+    public Button(PApplet p, PImage img, float x, float y, float width, float height){
         this.p = p;
-        this.image = image;
+        this.img = img;
         this.x = x;
         this.y = y;
         this.width = width;
@@ -44,12 +47,25 @@ public class Button {
 
         p.stroke(0, 30, 150, 100);
         p.fill(0, (float)0.5);
-        p.image(image, x, y, width, height);
+        p.image(img, x, y, width, height);
         p.rect(x, y, width, height);
     }
 
     // Returns true if the mouse coordinates are inside the button boundaries
     public boolean isInButton(){
         return p.mouseX >= x && p.mouseX <= x + width && p.mouseY >= y && p.mouseY <= y + height;
+    }
+
+    // Getters to make new fish from button
+    public PImage getImg(){
+        return img;
+    }
+
+    public String getName(){
+        return name;
+    }
+
+    public int type(){
+        return type;
     }
 }

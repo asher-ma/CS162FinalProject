@@ -12,13 +12,10 @@ public class Fish {
     private float x, y;
     private float xSpeed, ySpeed;
     private float width, height;
-    private Button button;
-    private int num;
 
-    public Fish(PApplet p, PImage img, int num, String name, int type, int tankLeft, int tankRight, int tankTop, int tankBot){
+    public Fish(PApplet p, PImage img, String name, int type, int tankLeft, int tankRight, int tankTop, int tankBot){
         this.p = p;
         this.name = name;
-        this.num = num;
         this.type = type;
 
         this.img = img;
@@ -31,13 +28,9 @@ public class Fish {
         y = p.random(tankTop + height, tankBot - height);
         xSpeed = randomNeg(p.random(MINSPEED, MAXSPEED))*2;
         ySpeed = randomNeg(p.random(MINSPEED, MAXSPEED));
-
-        if (num > 0) button = new Button(p, img, num);
     }
 
     public void draw(){
-        if (num > 0) button.draw();
-
         if (xSpeed < 0) {
             p.pushMatrix();
             p.translate(x + width, y);
@@ -101,11 +94,7 @@ public class Fish {
     public PImage getImg() {
         return img;
     }
-
-    public Button getButton() {
-        return button;
-    }
-
+    
     public String getName() {
         return name;
     }

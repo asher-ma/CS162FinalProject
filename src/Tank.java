@@ -8,6 +8,7 @@ public class Tank {
     private PImage background;
 
     ArrayList<Fish> fish = new ArrayList<Fish>();
+    ArrayList<Button> buttons = new ArrayList<Button>();
 
     // Contructor for when tank is entire sketch
     public Tank(PApplet p, PImage background){
@@ -31,6 +32,7 @@ public class Tank {
 
     public void draw(){
         p.image(background, 0, 0, p.width, p.height);
+
         /*
         use to find tank edges when tank isnt fullscreen
         p.fill(0, 0);
@@ -43,20 +45,24 @@ public class Tank {
             fish.move();
             fish.draw();
         }
+
+        for (Button button: buttons){
+            button.draw(); 
+        }
     }
 
     public void mouseClicked(){
-        for (Fish fish: fish){
-            Button button = fish.getButton();
+        for (Button button: buttons){
             if (button.isInButton()){
-                this.fish.add(new Fish(p, fish.getImg(), 0, fish.getName(), fish.getType(), leftX, rightX, topY, botY));
+                fish.add(new Fish(p, button.getImg(), button.getName(), button.type(), leftX, rightX, topY, botY));
                 return;
             }
         }
     }
 
     public void newFish(PImage fishImg, String name, int type){
-        fish.add(new Fish(p, fishImg, fish.size()+1, name, type, leftX, rightX, topY, botY));
+        fish.add(new Fish(p, fishImg, name, type, leftX, rightX, topY, botY));
+        buttons.add(new Button(p, buttons.size()+1, fishImg, type, name));
     }
 
     // Function to bounce fish off of eachother
