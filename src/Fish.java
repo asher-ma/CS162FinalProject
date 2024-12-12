@@ -13,6 +13,10 @@ public class Fish {
     private float xSpeed, ySpeed;
     private float width, height;
 
+    public Fish(){
+        
+    }
+
     public Fish(PApplet p, PImage img, String name, int type, int tankLeft, int tankRight, int tankTop, int tankBot){
         this.p = p;
         this.name = name;
