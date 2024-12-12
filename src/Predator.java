@@ -7,7 +7,6 @@ public class Predator extends Fish {
 
     private float baseXSpeed;
     private float hunger;
-    private float hungerTime;
     private float hungerTic;
 
     public Predator(PApplet p, PImage img, String name){
@@ -26,6 +25,8 @@ public class Predator extends Fish {
         hunger = 0;
         width = p.random(100, 150);
         height = width/this.getAspect();
+
+        hungerTic = MAX_HUNGER/(DEFAULT_HUNGER_TIME*p.frameRate);
     }
 
     public void draw(){
