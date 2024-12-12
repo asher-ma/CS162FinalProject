@@ -50,6 +50,8 @@ public class Tank {
         for (Button button: buttons){
             button.draw(); 
         }
+
+        killHungry();
     }
 
     public void mouseClicked(){
@@ -81,6 +83,16 @@ public class Tank {
         }
     }
 
+    private void killHungry(){
+        for (int i = fish.size()-1; i >= 0; i--) {
+            if (fish.get(i).getType().equals("predator")) {
+                if (fish.get(i).getHunger() < 0){
+                    fish.remove(i);
+                }
+            }
+        }
+    }
+
     // Function to bounce fish off of eachother
     // Determine if and which fish are colliding
     // determine which side of each fish is overlapping
@@ -93,14 +105,16 @@ public class Tank {
                 Fish f1 = fish.get(i);
                 Fish f2 = fish.get(j);
                 if (isColliding(f1, f2)) {
-                    if (f1.getType().equals("Predator") && f2.getType().equals("Prey")){
+                    if (f1.getType().equals("predator") && f2.getType().equals("prey")){
                         if(isFacingCollision(f1, f2)){
                             System.out.println(f1.getSpecies() + " ate " + f2.getSpecies());
+                            f1.resetHunger();
                             deadFish.add(f2);
                         }
-                    } else if (f1.getType().equals("Prey") && f2.getType().equals("Predator")){
+                    } else if (f1.getType().equals("prey") && f2.getType().equals("predator")){
                         if(isFacingCollision(f2, f1)){
                             System.out.println(f2.getSpecies() + " ate " + f1.getSpecies());
+                            f2.resetHunger();
                             deadFish.add(f1);
                         }
                     } else {

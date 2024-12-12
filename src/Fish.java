@@ -2,16 +2,15 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Fish {
-    private PApplet p;
+    protected PApplet p;
     private final float MINSPEED = (float)0.6;
     private final float MAXSPEED = (float)2;
 
     private PImage img;
-    private String species;
+    protected String species;
 
-    private float x, y;
-    protected float xSpeed;
-    private float ySpeed;
+    protected float x, y;
+    protected float xSpeed, ySpeed;
     protected float width, height;
 
     public Fish(){
@@ -25,8 +24,8 @@ public class Fish {
         width = p.random(40, 70);
         height = width/this.getAspect();
 
-        x = p.random(width);
-        y = p.random(height);
+        x = p.random(p.width - width);
+        y = p.random(p.height - height);
         xSpeed = randomNeg(p.random(MINSPEED, MAXSPEED))*2;
         ySpeed = randomNeg(p.random(MINSPEED, MAXSPEED));
     }
@@ -106,7 +105,14 @@ public class Fish {
     }
 
     public String getType(){
-        return "Fish";
+        return "fish";
+    }
+
+    public float getHunger(){
+        return 1;
+    }
+
+    public void resetHunger(){
     }
 
     // Getters

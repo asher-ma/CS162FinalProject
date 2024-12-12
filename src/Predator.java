@@ -2,41 +2,61 @@ import processing.core.PApplet;
 import processing.core.PImage;
 
 public class Predator extends Fish {
-    private final float MAX_HUNGER = (float)1;
-    private final float DEFAULT_HUNGER_TIME = 10; // Time fish will take to die if it doesn't eat
+    private final float HUNGER_TIME = 15;
 
-    private float baseXSpeed;
+    private float maxHunger;
     private float hunger;
     private float hungerTic;
 
     public Predator(PApplet p, PImage img, String species){
         super(p, img, species);
-        baseXSpeed = xSpeed;
-        hunger = 0;
         width = p.random(100, 150);
         height = width/this.getAspect();
 
-        hungerTic = MAX_HUNGER/(DEFAULT_HUNGER_TIME*p.frameRate);
+        x = p.random(p.width - width);
+        y = p.random(p.height - height);
+
+        maxHunger = width;
+        hunger = maxHunger;
+        hungerTic = maxHunger/(HUNGER_TIME*p.frameRate);
     }
 
     public Predator(PApplet p, PImage img, String species, int tankLeft, int tankRight, int tankTop, int tankBot){
         super(p, img, species, tankLeft, tankRight, tankTop, tankBot);
-        baseXSpeed = xSpeed;
-        hunger = 0;
         width = p.random(100, 150);
         height = width/this.getAspect();
 
-        hungerTic = MAX_HUNGER/(DEFAULT_HUNGER_TIME*p.frameRate);
+        maxHunger = width;
+        hunger = maxHunger;
+        hungerTic = maxHunger/(HUNGER_TIME*p.frameRate);
     }
 
     public void draw(){
         super.draw();
+        drawHunger();
         updateHunger();
-        xSpeed = baseXSpeed*2-hunger;
+    }
+
+    private void drawHunger(){
+        p.noStroke();
+        p.fill(255, 0, 0, 100);
+        p.rect(x, y + height, hunger, width/15);
+        p.noFill();
+        p.strokeWeight((float)0.5);
+        p.stroke(0, 0, 0);
+        p.rect(x, y + height, width, width/15);
     }
 
     private void updateHunger(){
-        hunger += 0.001;
+        if (hunger > 0) {
+            hunger -= hungerTic;
+        } else {
+            System.out.println(species + " died from hunger");
+        }
+    }
+
+    public void resetHunger(){
+        hunger = maxHunger;
     }
 
     public float getHunger(){
@@ -44,6 +64,6 @@ public class Predator extends Fish {
     }
 
     public String getType(){
-        return "Predator";
+        return "predator";
     }
 }
