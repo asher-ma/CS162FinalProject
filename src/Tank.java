@@ -110,17 +110,24 @@ public class Tank {
                             System.out.println(f1.getSpecies() + " ate " + f2.getSpecies());
                             f1.resetHunger();
                             deadFish.add(f2);
+                        } else {
+                            f1.swimAway(collisionSide(f1, f2));
+                            f2.swimAway(collisionSide(f2, f1));
                         }
                     } else if (f1.getType().equals("prey") && f2.getType().equals("predator")){
                         if(isFacingCollision(f2, f1)){
                             System.out.println(f2.getSpecies() + " ate " + f1.getSpecies());
                             f2.resetHunger();
                             deadFish.add(f1);
+                        } else {
+                            f1.swimAway(collisionSide(f1, f2));
+                            f2.swimAway(collisionSide(f2, f1));
                         }
                     } else {
                         f1.swimAway(collisionSide(f1, f2));
                         f2.swimAway(collisionSide(f2, f1));
                     }
+                    
                 }
             }
         }
