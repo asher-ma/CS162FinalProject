@@ -9,8 +9,8 @@ public class Predator extends Fish {
     private float hunger;
     private float hungerTic;
 
-    public Predator(PApplet p, PImage img, String name){
-        super(p, img, name);
+    public Predator(PApplet p, PImage img, String species){
+        super(p, img, species);
         baseXSpeed = xSpeed;
         hunger = 0;
         width = p.random(100, 150);
@@ -19,8 +19,8 @@ public class Predator extends Fish {
         hungerTic = MAX_HUNGER/(DEFAULT_HUNGER_TIME*p.frameRate);
     }
 
-    public Predator(PApplet p, PImage img, String name, int type, int tankLeft, int tankRight, int tankTop, int tankBot){
-        super(p, img, name, type, tankLeft, tankRight, tankTop, tankBot);
+    public Predator(PApplet p, PImage img, String species, int tankLeft, int tankRight, int tankTop, int tankBot){
+        super(p, img, species, tankLeft, tankRight, tankTop, tankBot);
         baseXSpeed = xSpeed;
         hunger = 0;
         width = p.random(100, 150);

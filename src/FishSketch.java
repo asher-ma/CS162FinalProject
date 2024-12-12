@@ -9,12 +9,12 @@ public class FishSketch extends PApplet {
  
     public void setup(){
         tank = new Tank(this, this.loadImage("../data/sotBg.png"));
-        tank.newFish(this.loadImage("../data/rubySplashtail.png"), "Ruby Splashtail", 0);
-        tank.newFish(this.loadImage("../data/almondAncientScale.png"), "Almond AncientScale", 0);
-        tank.newFish(this.loadImage("../data/russetWildsplash.png"), "Russet Wildsplash", 0);
-        tank.newFish(this.loadImage("../data/stoneIslehopper.png"), "Stone Islehopper", 2);
-        tank.newFish(this.loadImage("../data/ashenDevilFish.png"), "Ashen Devilfish", 1);
-        tank.newFish(this.loadImage("../data/ancientStormfish.png"), "Ancient Stormfish", 1);
+        tank.newFishType(this.loadImage("../data/rubySplashtail.png"), "Ruby Splashtail", "prey");
+        tank.newFishType(this.loadImage("../data/almondAncientScale.png"), "Almond AncientScale", "prey");
+        tank.newFishType(this.loadImage("../data/russetWildsplash.png"), "Russet Wildsplash", "prey");
+        tank.newFishType(this.loadImage("../data/stoneIslehopper.png"), "Stone Islehopper", "fish");
+        tank.newFishType(this.loadImage("../data/ashenDevilFish.png"), "Ashen Devilfish", "predator");
+        tank.newFishType(this.loadImage("../data/ancientStormfish.png"), "Ancient Stormfish", "predator");
     }
 
     public void draw(){

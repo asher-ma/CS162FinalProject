@@ -7,7 +7,7 @@ public class Fish {
     private final float MAXSPEED = (float)2;
 
     private PImage img;
-    private String name;
+    private String species;
 
     private float x, y;
     protected float xSpeed;
@@ -17,9 +17,9 @@ public class Fish {
     public Fish(){
     }
 
-    public Fish(PApplet p, PImage img, String name){
+    public Fish(PApplet p, PImage img, String species){
         this.p = p;
-        this.name = name;
+        this.species = species;
 
         this.img = img;
         width = p.random(40, 70);
@@ -31,14 +31,13 @@ public class Fish {
         ySpeed = randomNeg(p.random(MINSPEED, MAXSPEED));
     }
 
-    public Fish(PApplet p, PImage img, String name, int type, int tankLeft, int tankRight, int tankTop, int tankBot){
+    public Fish(PApplet p, PImage img, String species, int tankLeft, int tankRight, int tankTop, int tankBot){
         this.p = p;
-        this.name = name;
+        this.species = species;
 
         this.img = img;
         float aspectRatio = img.width/img.height;
-        if (type == 1) width = p.random(100, 150);
-        else width = p.random(40, 70);
+        width = p.random(40, 70);
         height = width/aspectRatio;
 
         x = p.random(tankLeft + width, tankRight - width);
@@ -116,8 +115,8 @@ public class Fish {
         return img;
     }
     
-    public String getName() {
-        return name;
+    public String getSpecies() {
+        return species;
     }
 
     public float getX() {
@@ -153,6 +152,6 @@ public class Fish {
     }
 
     public String toString(){
-        return name;
+        return species;
     }
 }

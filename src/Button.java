@@ -10,16 +10,16 @@ public class Button {
     private PImage img;
     private float x, y;
     private float width, height;
-    private int type;
-    private String name;
+    private String type;
+    private String species;
 
     // Use the default width and height
     // Use the sketch dimensions and fish number to place the button
-    public Button(PApplet p, int buttonNum, PImage img, int type, String name){
+    public Button(PApplet p, int buttonNum, PImage img, String type, String species){
         this.p = p;
         this.img = img;
         this.type = type;
-        this.name = name;
+        this.species = species;
         y = p.height - DEFAULT_HEIGHT - BUFFER;
         x = p.width - (DEFAULT_WIDTH + BUFFER)*buttonNum;
         width = DEFAULT_WIDTH;
@@ -61,11 +61,11 @@ public class Button {
         return img;
     }
 
-    public String getName(){
-        return name;
+    public String getSpecies(){
+        return species;
     }
 
-    public int type(){
+    public String getType(){
         return type;
     }
 }

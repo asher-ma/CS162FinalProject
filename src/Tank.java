@@ -55,15 +55,30 @@ public class Tank {
     public void mouseClicked(){
         for (Button button: buttons){
             if (button.isInButton()){
-                fish.add(new Fish(p, button.getImg(), button.getName(), button.type(), leftX, rightX, topY, botY));
+                newFish(button.getImg(), button.getSpecies(), button.getType());
                 return;
             }
         }
     }
 
-    public void newFish(PImage fishImg, String name, int type){
-        fish.add(new Fish(p, fishImg, name, type, leftX, rightX, topY, botY));
-        buttons.add(new Button(p, buttons.size()+1, fishImg, type, name));
+    public void newFishType(PImage fishImg, String species, String type){
+        buttons.add(new Button(p, buttons.size()+1, fishImg, type, species));
+    }
+
+    private void newFish(PImage fishImg, String species, String type){
+        if (leftX + rightX + topY + botY == p.width + p.height) {
+            if (type.equals("predator")){
+                fish.add(new Predator(p, fishImg, species));
+            } else if (type.equals("prey")){
+                fish.add(new Prey(p, fishImg, species));
+            } else fish.add(new Fish(p, fishImg, species));
+        } else {
+            if (type.equals("predator")){
+                fish.add(new Predator(p, fishImg, species, leftX, rightX, topY, botY ));
+            } else if (type.equals("prey")){
+                fish.add(new Prey(p, fishImg, species, leftX, rightX, topY, botY));
+            } else fish.add(new Fish(p, fishImg, species, leftX, rightX, topY, botY));
+        }
     }
 
     // Function to bounce fish off of eachother
@@ -80,12 +95,12 @@ public class Tank {
                 if (isColliding(f1, f2)) {
                     if (f1.getType().equals("Predator") && f2.getType().equals("Prey")){
                         if(isFacingCollision(f1, f2)){
-                            System.out.println(f1.getName() + " ate " + f2.getName());
+                            System.out.println(f1.getSpecies() + " ate " + f2.getSpecies());
                             deadFish.add(f2);
                         }
                     } else if (f1.getType().equals("Prey") && f2.getType().equals("Predator")){
                         if(isFacingCollision(f2, f1)){
-                            System.out.println(f2.getName() + " ate " + f1.getName());
+                            System.out.println(f2.getSpecies() + " ate " + f1.getSpecies());
                             deadFish.add(f1);
                         }
                     } else {
