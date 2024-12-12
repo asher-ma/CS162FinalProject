@@ -3,7 +3,7 @@ import processing.core.PImage;
 
 public class Predator extends Fish {
     private final float MAX_HUNGER = (float)1;
-    private final float DEFAULT_HUNGER_TIME = 10;
+    private final float DEFAULT_HUNGER_TIME = 10; // Time fish will take to die if it doesn't eat
 
     private float baseXSpeed;
     private float hunger;
@@ -41,5 +41,9 @@ public class Predator extends Fish {
 
     public float getHunger(){
         return hunger;
+    }
+
+    public String getType(){
+        return "Predator";
     }
 }

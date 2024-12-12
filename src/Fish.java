@@ -8,7 +8,7 @@ public class Fish {
 
     private PImage img;
     private String name;
-    private int type; // 0=prey 1=predator 2=special
+
     private float x, y;
     protected float xSpeed;
     private float ySpeed;
@@ -34,7 +34,6 @@ public class Fish {
     public Fish(PApplet p, PImage img, String name, int type, int tankLeft, int tankRight, int tankTop, int tankBot){
         this.p = p;
         this.name = name;
-        this.type = type;
 
         this.img = img;
         float aspectRatio = img.width/img.height;
@@ -107,11 +106,11 @@ public class Fish {
         return img.width/img.height;
     }
 
-    // Getters
-    
-    public int getType(){
-        return type;
+    public String getType(){
+        return "Fish";
     }
+
+    // Getters
 
     public PImage getImg() {
         return img;

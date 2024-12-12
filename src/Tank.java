@@ -78,12 +78,12 @@ public class Tank {
                 Fish f1 = fish.get(i);
                 Fish f2 = fish.get(j);
                 if (isColliding(f1, f2)) {
-                    if (f1.getType() == 1 && f2.getType() != 1 && f1.getType() != 2 && f2.getType() != 2){
+                    if (f1.getType().equals("Predator") && f2.getType().equals("Prey")){
                         if(isFacingCollision(f1, f2)){
                             System.out.println(f1.getName() + " ate " + f2.getName());
                             deadFish.add(f2);
                         }
-                    } else if (f1.getType() != 1 && f2.getType() == 1 && f1.getType() != 2 && f2.getType() != 2){
+                    } else if (f1.getType().equals("Prey") && f2.getType().equals("Predator")){
                         if(isFacingCollision(f2, f1)){
                             System.out.println(f2.getName() + " ate " + f1.getName());
                             deadFish.add(f1);
