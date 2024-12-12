@@ -10,11 +10,25 @@ public class Fish {
     private String name;
     private int type; // 0=prey 1=predator 2=special
     private float x, y;
-    private float xSpeed, ySpeed;
-    private float width, height;
+    protected float xSpeed;
+    private float ySpeed;
+    protected float width, height;
 
     public Fish(){
-        
+    }
+
+    public Fish(PApplet p, PImage img, String name){
+        this.p = p;
+        this.name = name;
+
+        this.img = img;
+        width = p.random(40, 70);
+        height = width/this.getAspect();
+
+        x = p.random(width);
+        y = p.random(height);
+        xSpeed = randomNeg(p.random(MINSPEED, MAXSPEED))*2;
+        ySpeed = randomNeg(p.random(MINSPEED, MAXSPEED));
     }
 
     public Fish(PApplet p, PImage img, String name, int type, int tankLeft, int tankRight, int tankTop, int tankBot){
@@ -87,6 +101,10 @@ public class Fish {
 
     public float getMidY(){
         return y + height/2;
+    }
+
+    protected float getAspect(){
+        return img.width/img.height;
     }
 
     // Getters
