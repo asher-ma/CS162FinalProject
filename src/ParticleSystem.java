@@ -9,5 +9,11 @@ public class ParticleSystem {
         this.p = p;
         count = (int)((right - left)/5);
         particles = new DeathParticle[count];
+
+        for (int i = 0; i < count; i++){
+            particles[i] = new DeathParticle(p, p.random(left, right), p.random(top, bottom));
+        }
     }
+
+    
 }
