@@ -49,11 +49,10 @@ public class Tank {
         }
 
         if (particleSystems.size() > 0){
-            for (int i = particleSystems.size()-1; i > 0; i--){
+            for (int i = particleSystems.size()-1; i >= 0; i--){
                 if (particleSystems.get(i).exists()){
                     particleSystems.get(i).draw();
-                } else particleSystems.remove(particleSystems.get(i));
-                
+                } else particleSystems.remove(i);
             }
         }
 
@@ -117,7 +116,6 @@ public class Tank {
                 if (isColliding(f1, f2)) {
                     if (f1.getType().equals("predator") && f2.getType().equals("prey")){
                         if(isFacingCollision(f1, f2)){
-                            System.out.println(f1.getSpecies() + " ate " + f2.getSpecies());
                             f1.resetHunger();
                             deadFish.add(f2);
                         } else {
@@ -126,7 +124,6 @@ public class Tank {
                         }
                     } else if (f1.getType().equals("prey") && f2.getType().equals("predator")){
                         if(isFacingCollision(f2, f1)){
-                            System.out.println(f2.getSpecies() + " ate " + f1.getSpecies());
                             f2.resetHunger();
                             deadFish.add(f1);
                         } else {
