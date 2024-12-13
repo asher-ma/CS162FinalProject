@@ -34,5 +34,13 @@ public class DeathParticle {
         //p.strokeWeight(1);
         p.fill(r, G, B, A);
         p.circle(x, y, size);
+        move();
+    }
+
+    private void move(){
+        ySpeed += GRAVITY;
+        x += xSpeed;
+        y += ySpeed;
+        time++;
     }
 }
