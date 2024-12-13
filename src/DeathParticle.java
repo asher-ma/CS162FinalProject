@@ -4,7 +4,7 @@ public class DeathParticle {
     private final float GRAVITY = (float)0.01;
     private final int G = 0;
     private final int B = 0;
-    private final int A = 150;
+    private final int A = 170;
     
     private PApplet p;
     private float r;
@@ -18,20 +18,19 @@ public class DeathParticle {
         this.x = x;
         this.y = y;
 
-        ySpeed = p.random(-1, 1);
+        xSpeed = p.random((float)-0.5, (float)0.5);
         ySpeed = p.random(-1, 1);
 
         time = 0;
-        life = p.random(300);
+        life = p.random(50, 300);
 
-        r = p.random(70, 170);
+        r = p.random(150, 250);
 
-        size = p.random(3, 6);
+        size = p.random(3, 8);
     }
 
     public void draw(){
-        p.stroke(0, 0, 0, 20);
-        //p.strokeWeight(1);
+        p.noStroke();
         p.fill(r, G, B, A);
         p.circle(x, y, size);
     }
