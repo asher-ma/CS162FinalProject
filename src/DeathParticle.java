@@ -43,4 +43,12 @@ public class DeathParticle {
         y += ySpeed;
         time++;
     }
+
+    public float getTime(){
+        return time;
+    }
+
+    public float getLife(){
+        return life;
+    }
 }

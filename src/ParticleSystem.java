@@ -15,5 +15,11 @@ public class ParticleSystem {
         }
     }
 
-    
+    public void draw(){
+        for (int i = 0; i < count; i++){
+            if (particles[i].getTime() < particles[i].getLife()){
+                particles[i].draw();
+            }
+        }
+    }
 }
