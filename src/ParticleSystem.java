@@ -19,7 +19,17 @@ public class ParticleSystem {
         for (int i = 0; i < count; i++){
             if (particles[i].getTime() < particles[i].getLife()){
                 particles[i].draw();
+                particles[i].move();
             }
         }
+    }
+    
+    public boolean exists(){
+        for (int i = 0; i < count; i++){
+            if (particles[i].getTime() < particles[i].getLife()){
+                return true;
+            }
+        }
+        return false;
     }
 }
