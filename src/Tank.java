@@ -9,6 +9,7 @@ public class Tank {
 
     ArrayList<Fish> fish = new ArrayList<Fish>();
     ArrayList<Button> buttons = new ArrayList<Button>();
+    ArrayList<ParticleSystem> particleSystems = new ArrayList<ParticleSystem>();
 
     // Contructor for when tank is entire sketch
     public Tank(PApplet p, PImage background){
@@ -45,6 +46,15 @@ public class Tank {
             testSides(fish);
             fish.move();
             fish.draw();
+        }
+
+        if (particleSystems.size() > 0){
+            for (int i = particleSystems.size()-1; i > 0; i--){
+                if (particleSystems.get(i).exists()){
+                    particleSystems.get(i).draw();
+                } else particleSystems.remove(particleSystems.get(i));
+                
+            }
         }
 
         for (Button button: buttons){
@@ -133,6 +143,7 @@ public class Tank {
         }
         if (deadFish.size() > 0){
             for (Fish f: deadFish){
+                particleSystems.add(new ParticleSystem(p, f.x, f.x + f.width, f.y, f.y + f.height));
                 fish.remove(f);
             }
         }
