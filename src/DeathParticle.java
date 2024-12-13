@@ -28,4 +28,11 @@ public class DeathParticle {
 
         size = p.random(3, 6);
     }
+
+    public void draw(){
+        p.stroke(0, 0, 0, 20);
+        //p.strokeWeight(1);
+        p.fill(r, G, B, A);
+        p.circle(x, y, size);
+    }
 }
