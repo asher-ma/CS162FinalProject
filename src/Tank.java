@@ -19,6 +19,7 @@ public class Tank {
         rightX = p.width;
         topY = 0;
         botY = p.height;
+        buttons.add(new Button(p, buttons.size()+1, p.loadImage("../data/fish.png"), "fish", "All"));
     }
 
     // Constructor for when tank doesnt take up entire sketch
@@ -66,8 +67,15 @@ public class Tank {
     public void mouseClicked(){
         for (Button button: buttons){
             if (button.isInButton()){
+                if (button.getSpecies().equals("All")){
+                    for (int i = 1; i < buttons.size(); i++){
+                        newFish(buttons.get(i).getImg(), buttons.get(i).getSpecies(), buttons.get(i).getType());
+                    }
+                    return;
+                } else {
                 newFish(button.getImg(), button.getSpecies(), button.getType());
                 return;
+                }
             }
         }
     }
